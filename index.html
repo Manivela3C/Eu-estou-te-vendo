@@ -12,14 +12,20 @@
         <source src="audio.wav" type="audio/wav">
         Seu navegador não suporta o elemento de áudio.
     </audio>
+    <button id="playButton" style="display: none;">Clique para começar</button>
     <script>
         const audio = document.getElementById('audio');
-        audio.volume = 0.3; // Define volume baixo
-        audio.play();
-        setInterval(() => {
-            audio.currentTime = 0;
+        const playButton = document.getElementById('playButton');
+
+        // Mostrar o botão apenas se necessário
+        document.body.addEventListener('click', () => {
+            audio.volume = 0.2; // Define volume baixo
             audio.play();
-        }, 45000); // Reinicia o áudio a cada 1 minuto
+            setInterval(() => {
+                audio.currentTime = 0;
+                audio.play();
+            }, 45000); // Reinicia o áudio a cada 30 segundos
+        }, { once: true });
     </script>
 </body>
 </html>
